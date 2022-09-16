@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -19,7 +21,7 @@ use App\Http\Controllers\ProductController;
  */
 Route::get('/',
     [ProductController::class, 'index']
-);
+)->name('home');
 
 /**
  * Orders
@@ -28,3 +30,9 @@ Route::get('/checkout/{id}',
 	[ProductController::class, 'formCheckout']
 )->name('checkout');
 
+Route::get('/show',
+	[OrderController::class, 'show']
+)->name('show');
+
+
+Route::resource('/order', OrderController::class);

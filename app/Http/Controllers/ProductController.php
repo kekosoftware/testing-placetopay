@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Traits\PaymentTrait;
 
 class ProductController extends Controller
 {
+    use PaymentTrait;
     /**
      * Product list
      *
@@ -21,7 +23,8 @@ class ProductController extends Controller
 
     public function formCheckout($id)
     {
-        $buy = Product::find($id);
-        return view('checkout', compact('buy'));
+        $product = Product::find($id);
+
+        return view('checkout', compact('product'));
     }
 }
