@@ -8,7 +8,10 @@
                 <h2 class="mb-3">Listado de productos</h2>
             </div>
             <div class="col-md-2">
-                &nbsp;
+                <a class="btn btn-outline-success"
+                    href="{{ route('checkout',2) }}">
+                    Listado de Ordenes
+                </a>
             </div>
         </div>
 

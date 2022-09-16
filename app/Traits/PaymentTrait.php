@@ -8,7 +8,7 @@ trait PaymentTrait
 {
     private function getReference(): String
     {
-        return rand(100000000,999999999);
+        return mt_rand(100000000,999999999);
     }
 
     private function getUuid(): String
