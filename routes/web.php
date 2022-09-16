@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -27,4 +28,7 @@ Route::get('/',
 Route::get('/checkout/{id}',
 	[ProductController::class, 'formCheckout']
 )->name('checkout');
+
+Route::resource('/order', OrderController::class);
+Route::get('show/{id}', [OrderController::class, 'show']);
 
