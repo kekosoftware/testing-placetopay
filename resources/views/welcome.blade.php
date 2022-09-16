@@ -9,7 +9,7 @@
             </div>
             <div class="col-md-2">
                 <a class="btn btn-outline-success"
-                    href="{{ route('checkout',2) }}">
+                    href="{{ route('order-list') }}">
                     Listado de Ordenes
                 </a>
             </div>

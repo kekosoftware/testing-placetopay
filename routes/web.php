@@ -33,6 +33,12 @@ Route::get('/checkout/{id}',
 Route::get('/show',
 	[OrderController::class, 'show']
 )->name('show');
+Route::get('/order-list',
+	[OrderController::class, 'index']
+)->name('order-list');
+Route::get('/order-details/{id}',
+	[OrderController::class, 'details']
+)->name('order-details');
 
 
 Route::resource('/order', OrderController::class);

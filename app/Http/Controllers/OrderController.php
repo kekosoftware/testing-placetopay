@@ -37,7 +37,30 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = DB::table('orders')
+            ->join('products', 'products.id', 'orders.product_id')
+            ->join('transactions', 'transactions.order_id', 'orders.id')
+            ->paginate(10);
+
+        return view('orderlist', compact('orders'));
+    }
+
+    /**
+     * Display a details of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function details($id)
+    {
+        $orders = DB::table('orders')
+            ->join('products', 'products.id', 'orders.product_id')
+            ->join('transactions', 'transactions.order_id', 'orders.id')
+            ->where('orders.id', $id)
+            ->get();
+
+    //dd((Object)$orders, $orders[0]->requestId);
+        Cookie::queue('requestId', $orders[0]->requestId, 30);
+        return view('orderdetails', compact('orders'));
     }
 
     /**
